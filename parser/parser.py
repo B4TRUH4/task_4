@@ -1,9 +1,6 @@
 import asyncio
-import functools
 import os
-import time
 from datetime import datetime
-from typing import Callable
 
 import aiohttp
 from aiohttp import ClientSession
@@ -11,21 +8,10 @@ from aiohttp import ClientSession
 from config import DOWNLOAD_DIR, SEMAPHORE_COUNT, TIMEOUT
 from download import fetch_and_save, generate_links
 from database import prepare_db, Session
+from parser.utils.timer import timer
 from repository import TradingResultsRepository
 from models import TradingResult
 from processing import read_table
-
-
-def timer(func: Callable) -> Callable:
-    @functools.wraps(func)
-    async def wrapper(*args, **kwargs):
-        start = time.time()
-        result = await func(*args, **kwargs)
-        end = time.time()
-        print(f"Функция {func.__name__} выполнялась {end - start:.4f} секунд")
-        return result
-
-    return wrapper
 
 
 async def process(
