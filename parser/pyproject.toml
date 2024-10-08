@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "parser"
+version = "0.1.0"
+description = ""
+authors = ["B4TRUH4 <matveybond2002@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pandas = "^2.2.3"
+SQLAlchemy = "^2.0.35"
+requests = "^2.32.3"
+python-dotenv = "^1.0.1"
+psycopg2-binary = "^2.9.9"
+ruff = "^0.6.7"
+
+[tool.ruff]
+line-length = 80
+target-version = "py311"
+
+[tool.ruff.format]
+quote-style = "single"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
