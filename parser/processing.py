@@ -16,7 +16,7 @@ def read_table(filename: str) -> pd.DataFrame:
     return df
 
 
-def get_raw_table(df, start_index, end_index):
+def get_raw_table(df: pd.DataFrame, start_index: int, end_index: int):
     table = df.iloc[start_index + 3 : end_index, 1:]
     columns_line = df.iloc[start_index + 1, 1:]
     table.columns = prepare_columns(columns_line)
@@ -41,7 +41,7 @@ def get_cleaned_table(df: pd.DataFrame) -> pd.DataFrame:
     return table
 
 
-def prepare_columns(columns):
+def prepare_columns(columns: pd.DataFrame) -> pd.DataFrame:
     columns = columns.replace('\n', ' ', regex=True)
     columns = columns.str.lower()
     return columns
